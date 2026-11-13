@@ -85,3 +85,8 @@ GRANT SELECT, INSERT, UPDATE ON COMPANY, CATEGORY, TASK, TASK_COUNTER TO cosec_S
 -- The audit log is add-only: the app can read and insert, never change or delete.
 GRANT SELECT, INSERT ON AUDIT_LOG TO cosec_staff;
 GRANT USAGE ON ALL SEQUENCES IN SCHEMA PUBLIC TO cosec_staff;
+
+CREATE OR REPLACE FUNCTION cosec_staff_can_delete() RETURNS BOOLEAN AS $$
+BEGIN
+    RETURN FALSE;
+    END;    
